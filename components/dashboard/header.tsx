@@ -18,7 +18,7 @@ interface HeaderProps {
 
 export function Header({ onMenuClick }: HeaderProps) {
   return (
-    <header className="sticky top-0 z-40 border-b border-border/40 bg-card/40 backdrop-blur-md supports-[backdrop-filter]:bg-card/30">
+    <header className="sticky top-0 z-40 border-b border-border/30 bg-card/50 backdrop-blur-lg supports-[backdrop-filter]:bg-card/40 shadow-sm">
       <div className="flex items-center justify-between px-8 py-4 max-w-7xl mx-auto w-full">
         <div className="flex items-center space-x-4 flex-1">
           <Button variant="ghost" size="sm" onClick={onMenuClick} className="md:hidden hover:bg-secondary/50">

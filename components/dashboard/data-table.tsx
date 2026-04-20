@@ -34,11 +34,13 @@ const mockUsers: User[] = [
 export function DataTable() {
   const [searchTerm, setSearchTerm] = useState("")
   const [statusFilter, setStatusFilter] = useState("all")
+  const [roleFilter, setRoleFilter] = useState("all")
 
   const filteredUsers = mockUsers.filter((user) => {
     const matchesSearch = user.name.toLowerCase().includes(searchTerm.toLowerCase()) || user.email.toLowerCase().includes(searchTerm.toLowerCase())
     const matchesStatus = statusFilter === "all" || user.status === statusFilter
-    return matchesSearch && matchesStatus
+    const matchesRole = roleFilter === "all" || user.role === roleFilter
+    return matchesSearch && matchesStatus && matchesRole
   })
 
   return (
@@ -51,14 +53,14 @@ export function DataTable() {
           </div>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="grid gap-3 md:grid-cols-2">
-            <div className="relative">
+          <div className="grid gap-3 md:grid-cols-3">
+            <div className="relative md:col-span-1">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-              <Input placeholder="Search..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="pl-10" />
+              <Input placeholder="Search by name..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="pl-10 bg-secondary/30 border-border/50" />
             </div>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="outline" className="w-full">
+                <Button variant="outline" className="w-full bg-secondary/30 border-border/50 hover:bg-secondary/50">
                   <Filter className="h-4 w-4 mr-2" /> Status
                 </Button>
               </DropdownMenuTrigger>
@@ -66,6 +68,19 @@ export function DataTable() {
                 <DropdownMenuItem onClick={() => setStatusFilter("all")}>All</DropdownMenuItem>
                 <DropdownMenuItem onClick={() => setStatusFilter("active")}>Active</DropdownMenuItem>
                 <DropdownMenuItem onClick={() => setStatusFilter("inactive")}>Inactive</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" className="w-full bg-secondary/30 border-border/50 hover:bg-secondary/50">
+                  <Filter className="h-4 w-4 mr-2" /> Role
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem onClick={() => setRoleFilter("all")}>All</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setRoleFilter("Admin")}>Admin</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setRoleFilter("Manager")}>Manager</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setRoleFilter("User")}>User</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>

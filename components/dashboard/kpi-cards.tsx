@@ -50,10 +50,10 @@ const kpiData: KPIItem[] = [
 ]
 
 const colorConfigs = {
-  blue: "from-blue-500/20 to-blue-500/5 border-blue-200/50 dark:border-blue-500/20",
-  green: "from-green-500/20 to-green-500/5 border-green-200/50 dark:border-green-500/20",
-  purple: "from-purple-500/20 to-purple-500/5 border-purple-200/50 dark:border-purple-500/20",
-  orange: "from-orange-500/20 to-orange-500/5 border-orange-200/50 dark:border-orange-500/20",
+  blue: "from-blue-500/25 to-blue-500/10 border-blue-200/60 dark:border-blue-500/30 dark:from-blue-500/15 dark:to-blue-500/5",
+  green: "from-green-500/25 to-green-500/10 border-green-200/60 dark:border-green-500/30 dark:from-green-500/15 dark:to-green-500/5",
+  purple: "from-purple-500/25 to-purple-500/10 border-purple-200/60 dark:border-purple-500/30 dark:from-purple-500/15 dark:to-purple-500/5",
+  orange: "from-orange-500/25 to-orange-500/10 border-orange-200/60 dark:border-orange-500/30 dark:from-orange-500/15 dark:to-orange-500/5",
 }
 
 const iconColors = {

@@ -14,23 +14,27 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
 
   return (
-    <div className="flex h-screen bg-gradient-to-br from-background via-background to-secondary/5">
+    <div className="flex h-screen bg-background">
+      {/* Background gradient overlay */}
+      <div className="fixed inset-0 -z-10 bg-gradient-to-br from-background via-background/95 to-secondary/10 pointer-events-none" />
+      <div className="fixed inset-0 -z-10 bg-gradient-to-t from-primary/5 via-transparent to-transparent pointer-events-none" />
+
       {/* Desktop Sidebar */}
-      <div className="hidden md:flex flex-col bg-card/50 backdrop-blur-sm border-r border-border/50">
+      <div className="hidden md:flex flex-col">
         <Sidebar collapsed={sidebarCollapsed} onToggle={() => setSidebarCollapsed(!sidebarCollapsed)} />
       </div>
 
       {/* Mobile Sidebar */}
       <Sheet open={sidebarOpen} onOpenChange={setSidebarOpen}>
-        <SheetContent side="left" className="p-0 w-64 bg-card/95 backdrop-blur-md">
+        <SheetContent side="left" className="p-0 w-64 bg-card/95 backdrop-blur-md border-r border-border/40">
           <Sidebar collapsed={false} onToggle={() => setSidebarOpen(false)} />
         </SheetContent>
       </Sheet>
 
       <div className="flex flex-col flex-1 overflow-hidden">
         <Header onMenuClick={() => setSidebarOpen(true)} />
-        <main className="flex-1 overflow-auto bg-gradient-to-b from-transparent to-secondary/2">
-          <div className="p-8 max-w-7xl mx-auto">
+        <main className="flex-1 overflow-auto">
+          <div className="p-6 md:p-8 max-w-7xl mx-auto space-y-2">
             {children}
           </div>
         </main>

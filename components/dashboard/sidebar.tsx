@@ -38,7 +38,7 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
   return (
     <TooltipProvider delayDuration={200}>
       <div className={cn(
-        "flex flex-col h-screen bg-gradient-to-b from-card to-card/95 border-r border-border/50 transition-all duration-300",
+        "flex flex-col h-screen bg-gradient-to-b from-card/80 via-card/70 to-card/60 border-r border-border/40 backdrop-blur-sm transition-all duration-300 shadow-sm",
         collapsed ? "w-20" : "w-64"
       )}>
         {/* Header */}
