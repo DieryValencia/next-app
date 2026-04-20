@@ -26,7 +26,7 @@ export function Header({ onMenuClick }: HeaderProps) {
           </Button>
           <div className="flex flex-col space-y-1">
             <h1 className="text-2xl font-bold tracking-tight">Dashboard</h1>
-            <p className="text-sm text-muted-foreground">Welcome back, Admin User</p>
+            <p className="text-sm text-muted-foreground">Welcome back, Diery Valencia</p>
           </div>
         </div>
         
@@ -68,9 +68,9 @@ export function Header({ onMenuClick }: HeaderProps) {
             <DropdownMenuContent className="w-56" align="end" sideOffset={8}>
               <DropdownMenuLabel className="font-normal">
                 <div className="flex flex-col space-y-1">
-                  <p className="text-sm font-semibold leading-none">Admin User</p>
+                  <p className="text-sm font-semibold leading-none">Diery Valencia</p>
                   <p className="text-xs leading-none text-muted-foreground">
-                    admin@example.com
+                    dieryvale.01@gmail.com
                   </p>
                 </div>
               </DropdownMenuLabel>
