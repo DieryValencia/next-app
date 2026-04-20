@@ -16,9 +16,11 @@ import {
   Settings,
   ChevronLeft,
   ChevronRight,
-  Zap
+  Zap,
+  Shield
 } from "lucide-react"
 import { useState } from "react"
+import { useRouter, usePathname } from "next/navigation"
 
 interface SidebarProps {
   collapsed: boolean
@@ -26,14 +28,17 @@ interface SidebarProps {
 }
 
 const navigationItems = [
-  { icon: LayoutDashboard, label: "Dashboard", href: "/", active: true },
-  { icon: Users, label: "Users", href: "/users", active: false },
-  { icon: BarChart3, label: "Analytics", href: "/analytics", active: false },
-  { icon: Settings, label: "Settings", href: "/settings", active: false },
+  { icon: Shield, label: "Admin", href: "/admin" },
+  { icon: LayoutDashboard, label: "Dashboard", href: "/" },
+  { icon: Users, label: "Users", href: "/users" },
+  { icon: BarChart3, label: "Analytics", href: "/analytics" },
+  { icon: Settings, label: "Settings", href: "/settings" },
 ]
 
 export function Sidebar({ collapsed, onToggle }: SidebarProps) {
   const [activeHover, setActiveHover] = useState<string | null>(null)
+  const router = useRouter()
+  const pathname = usePathname()
 
   return (
     <TooltipProvider delayDuration={200}>
@@ -71,7 +76,7 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
         {/* Navigation */}
         <nav className="flex-1 p-4 space-y-2 overflow-y-auto">
           {navigationItems.map((item) => {
-            const isActive = item.active
+            const isActive = pathname === item.href || (item.href === "/" && pathname === "/")
             const isHovered = activeHover === item.label
             
             return (
@@ -79,8 +84,9 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
                 <TooltipTrigger asChild>
                   <Button
                     variant="ghost"
+                    onClick={() => router.push(item.href)}
                     className={cn(
-                      "w-full justify-start transition-all duration-200 relative overflow-hidden",
+                      "w-full justify-start transition-all duration-200 relative overflow-hidden cursor-pointer",
                       collapsed && "px-2 justify-center",
                       isActive && "bg-primary/10 text-primary hover:bg-primary/15",
                       !isActive && "hover:bg-secondary/50 text-muted-foreground hover:text-foreground"
